@@ -32,7 +32,7 @@ if __name__=="__main__":
     #utilizando geters e setters
     title1.set_name("Spy")
     print(title1.get_name())
-
+    
     #utilizando propreties
     title1.name = "Spyy"
     print(title1.name)
