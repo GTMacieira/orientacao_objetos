@@ -1,40 +1,30 @@
-from pickle import FALSE
 from functions import*
+from datetime import datetime
 #criação da classe
 class Title():
-    #atributos da classe
-    def __init__(self,name,author,rel_chaps, aquis_chaps, active):
-        self.name = name
-        self.author = author
-        self.rel_chaps = rel_chaps
-        self.aquis_chaps=aquis_chaps
-        self.__active = active
+    title_type = "Mangá"
+    current_year = int(datetime.strftime(datetime.now(), '%Y'))
 
-    def status(self):
-        self.active = False
-        print("Coleção completa")
+    '''Criar títulos para biblioteca, no qual criará os títulos de acordo com nome do título, nome do tílo no ligua original, autor,
+    resumo do título, capitulos lançados, capitulos adquiridos, qual tipo de midia que está o título, se o título esta ou não ativo'''
+    def __init__(self,title_name, origin_title_name, author_title, pub_year, abstract, rel_chaps, acquisition_chaps, acquisition_date, dig_phy, active):
+        self.title_name = title_name
+        self.origin_title_name = origin_title_name
+        self.author_title = author_title
+        self.pub_year= pub_year
+        self.abstract=abstract
+        self.rel_chaps = rel_chaps
+        self.acquisition_chaps = acquisition_chaps
+        self.acquisition_date = acquisition_date
+        self.dig_phy = dig_phy 
+        self.active = active
+
+        #cls_term()
 
     @property
-    def get_name(self):
-        return self.__name
-    
-    @name.setter
-    def set_name(self,name):
-        self.__name = name
+    def title(self):
+        return self._title_name
 
-if __name__=="__main__":
-    cls_term()
-    title1 = Title("Goblin Slayer","Autor não sei", 75, 3, True)    
-    title1.status()
-    title1.active = False
-    print (title1.active)
-
-    #utilizando geters e setters
-    title1.set_name("Spy")
-    print(title1.get_name())
-    
-    #utilizando propreties
-    title1.name = "Spyy"
-    print(title1.name)
-
-
+    @title.setter
+    def name(self, nm):
+        self.title_name = nm.replace("@","A")
