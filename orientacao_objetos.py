@@ -1,3 +1,4 @@
+from turtle import home
 from functions import*
 from datetime import datetime
 #criação da classe
@@ -21,10 +22,30 @@ class Title():
 
         #cls_term()
 
-    @property
-    def title(self):
-        return self._title_name
+    @property                       
+    def title_name(self):
+        return self._title_name #Para não criar um loop infinito este nome não pode ser igual ao do metodo construtor
 
-    @title.setter
-    def name(self, nm):
-        self.title_name = nm.replace("@","A")
+    @title_name.setter
+    def title_name(self, new_name):
+        self._title_name = new_name.title() #Para não criar um loop infinito este nome não pode ser igual ao do metodo construtor
+
+
+
+class House:
+    def __init__(self, price):
+        self._price = price
+
+    @property
+    def price(self):
+        return self._price
+
+    @price.setter
+    def price(self, new_price):
+        self._price = new_price
+        
+
+if __name__=="__main__":
+    casa=House(50000)
+    casa.price = 700
+    print(casa.price)
