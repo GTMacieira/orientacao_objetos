@@ -1,3 +1,5 @@
+from dataclasses import replace
+from tkinter import E
 from turtle import home
 from functions import*
 from datetime import datetime
@@ -20,7 +22,7 @@ class Title():
         self.dig_phy = dig_phy 
         self.active = active
 
-        #cls_term()
+        cls_term()
 
     @property                       
     def title_name(self):
@@ -30,22 +32,17 @@ class Title():
     def title_name(self, new_name):
         self._title_name = new_name.title() #Para não criar um loop infinito este nome não pode ser igual ao do metodo construtor
 
-
-
-class House:
-    def __init__(self, price):
-        self._price = price
-
     @property
-    def price(self):
-        return self._price
+    def acquisition_date(self):
+        try:
+            if self._acquisition_date:
+                return self._acquisition_date                
+        except:
+            self._acquisition_date =""
 
-    @price.setter
-    def price(self, new_price):
-        self._price = new_price
+    @acquisition_date.setter
+    def acquisition_date(self, new_ac_date):
+        if new_ac_date:
+            self._acquisition_date = datetime.strptime(new_ac_date,'%d/%m/%Y')
         
-
-if __name__=="__main__":
-    casa=House(50000)
-    casa.price = 700
-    print(casa.price)
+        
